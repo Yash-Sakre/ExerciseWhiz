@@ -31,7 +31,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="navBar flex justify-between items-center py-2 md:py-0 md:px-[4rem] px-[2rem] top-0 border-2 border-primary rounded-xl my-2 lg:mx-1  ">
+    <div className="navBar flex justify-between items-center  py-2 md:py-0 md:px-[4rem] px-[2rem] top-0 border border-primary rounded-xl my-2 lg:mx-1 mx-2 ">
       <div className="logoDiv">
         <h1 className="logo text-[1rem] md:text-[2rem]  font-extrabold">
           <Link to="/" >
@@ -69,7 +69,7 @@ const Navbar = () => {
         className={
           !nav
             ? "hidden"
-            : "absolute top-20 left-0 h-screen  w-full flex flex-col justify-center items-center text-white bg-black"
+            : "absolute top-20 left-0 h-screen  w-full flex flex-col justify-center items-center text-black bg-white"
         }
       >
         <li className="menuList  py-6 hover:underline font-semibold">
