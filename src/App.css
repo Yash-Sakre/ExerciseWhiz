@@ -11,8 +11,8 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: black;
-    color: white;
+    background-color: #FBF9FA;
+    color: black;
     font-family: 'Inter', sans-serif;
     
 }
@@ -64,4 +64,16 @@ body{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+
+.ScrollMenuDiv {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+
 }

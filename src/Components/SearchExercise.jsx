@@ -12,7 +12,7 @@ const SearchExercise = ({ setexercises, bodyPart, setBodyPart }) => {
   useEffect(() => {
     const fetchExercisesData = async () => {
       const bodyPartsData = await fetchData(
-        "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
+        'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
         Exerciseoptions
       );
 
@@ -30,28 +30,66 @@ const SearchExercise = ({ setexercises, bodyPart, setBodyPart }) => {
     setSearch(Search.trim());
   };
 
-  useEffect(() => {
-    if (Search !== "") {
-      // Make the API call when the search term is not empty
-      fetchData("https://exercisedb.p.rapidapi.com/exercises", Exerciseoptions)
-        .then((exerciseData) => {
-          console.log(exerciseData);
-          if (exerciseData) {
-            const searchedExercises = exerciseData.filter((item) =>
-              item.name.toLowerCase().includes(Search) ||
-              item.target.toLowerCase().includes(Search) ||
-              item.equipment.toLowerCase().includes(Search) ||
-              item.bodyPart.toLowerCase().includes(Search)
-            );
-            console.log(searchedExercises)
-            setexercises(searchedExercises);
-          }
-        });
+  // useEffect(() => {
+  //   console.log(Search)
+  //   const handleRequest = setTimeout(() => {
+  //     console.log("request")
+  //     if (Search !== "") {
+  //       // Make the API call when the search term is not empty
+  //       fetchData("https://exercisedb.p.rapidapi.com/exercises?limit=1324", Exerciseoptions)
+  //         .then((exerciseData) => {
+  //           console.log(exerciseData);
+  //           if (exerciseData) {
+  //             const searchedExercises = exerciseData.filter(
+  //               (item) =>
+  //               item.name.toLowerCase().includes(Search) ||
+  //               item.target.toLowerCase().includes(Search) ||
+  //               item.equipment.toLowerCase().includes(Search) ||
+  //               item.bodyPart.toLowerCase().includes(Search)
+  //             );
+  //             console.log(searchedExercises)
+  //             setSearch('')
+  //             setexercises(searchedExercises);
+  //           }
+  //         });
+  //     }
+  //   }, 500)
+
+  const submitHandler = async () => {
+    // console.log(search);
+
+    if (Search) {
+      const exercisesData = await fetchData(
+        "https://exercisedb.p.rapidapi.com/exercises?limit=1400",
+        Exerciseoptions
+      );
+      //   console.log(exercisesData);
+
+      const searchExercises = exercisesData.filter(
+        (exercise) =>
+          exercise.name.toLowerCase().includes(Search) ||
+          exercise.target.toLowerCase().includes(Search) ||
+          exercise.equipment.toLowerCase().includes(Search) ||
+          exercise.bodyPart.toLowerCase().includes(Search)
+      );
+      //   console.log(searchExercises);
+      setSearch('');
+      setexercises(searchExercises);
+      window.scrollTo({
+        top: 1300,
+        behavior: "smooth",
+      });
     }
-  }, [Search, setexercises]);
+  };
+
+    
+  //   return () => {
+  //     clearTimeout(handleRequest); 
+  //   };
+  // }, [Search, setexercises]);
 
   return (
-    <div className="flex flex-col mt-10 items-center w-full  h-full">
+    <div className="flex flex-col mt-10 items-center w-full  h-full" id="Search">
       <div className=" md:text-[3rem] text-[2rem] px-12 text-center font-bold">
         Discover Your Perfect Exercise
       </div>
@@ -72,17 +110,17 @@ const SearchExercise = ({ setexercises, bodyPart, setBodyPart }) => {
         <button
           type="submit"
           className="absolute right-0 top-0 mt-5 mr-4"
-          onClick={handleSearch}
+          onClick={submitHandler}
         >
           <AiOutlineSearch />
         </button>
       </div>
 
-      <div className="w-full flex justify-center items-center">
+      <div className="w-full relative">
         <HorizontalScrollBar
           data={bodyParts}
-          bodyPart={bodyParts}
-          setBodyParts={setBodyParts}
+          bodyPart={bodyPart}
+          setBodyPart={setBodyPart}
         />
       </div>
     </div>

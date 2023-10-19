@@ -1,137 +1,95 @@
-import { Link } from "react-scroll";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
+import { FaBars, FaTimes } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  
   const [nav, setnav] = useState(false);
-
+  const navigate = useNavigate();
   const handleClick = () => setnav(!nav);
 
   const closenav = () => setnav(false);
+
+  const [isHome, setIsHome] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    const currentRoute = location.pathname;
+    if (currentRoute === "/") {
+      setIsHome(true);
+    } else {
+      setIsHome(false);
+    }
+  }, [isHome, location]);
+
+  const scrollToSection = (id) => {
+    closenav();
+    navigate("/");
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: "smooth" });
+  };
+
+
   return (
-    <div className="navBar flex justify-between items-center py-[1rem] md:px-[4rem] px-[2rem] sticky top-0 z-[1000] bg-black ">
+    <div className="navBar flex justify-between items-center py-2 md:py-0 md:px-[4rem] px-[2rem] top-0 border-2 border-primary rounded-xl my-2 lg:mx-1  ">
       <div className="logoDiv">
-        <h1 className="logo text-[2rem] md:text-[3rem] font-bold">
-          <a href="/">Train<span className="text-primary">Mate</span></a>
+        <h1 className="logo text-[1rem] md:text-[2rem]  font-extrabold">
+          <Link to="/" >
+            <span className="text-primary">Exercise</span>Whiz
+          </Link>
         </h1>
       </div>
 
       <div className="flex gap-8">
         <ul className="hidden md:flex gap-8">
-          <li className="menuList    ">
+          <li className="menuList hover:underline font-semibold ">
             {" "}
-            <Link to="/" >
-              Home
-            </Link>
+            <Link  to="/" onClick={() => scrollToSection("Hero")}>Home</Link>
           </li>
-          <li className="menuList   ">
+          <li className="menuList  hover:underline font-semibold ">
             {" "}
             <Link
-              to="about"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
+              to="/#Exercises"
+              onClick={() => scrollToSection("Exercises")}
+              
             >
-              About
+              Exercises
             </Link>
           </li>
-          <li className="menuList   ">
-            {" "}
-            <Link
-              to="projects"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >
-              Projects
-            </Link>
-          </li>
-          <li className="menuList   ">
-            {" "}
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >
-              Contact
-            </Link>
-          </li>
-
+          
         </ul>
-
       </div>
       {/* Hamburger */}
       <div onClick={handleClick} className="md:hidden z-10">
         {!nav ? <FaBars /> : <FaTimes />}
       </div>
-      
+
       {/* Mobile View */}
       <ul
         className={
           !nav
             ? "hidden"
-            : "absolute top-20 left-0 h-screen  w-full flex flex-col justify-center items-center bg-black"
+            : "absolute top-20 left-0 h-screen  w-full flex flex-col justify-center items-center text-white bg-black"
         }
       >
-        <li className="menuList  py-6   ">
+        <li className="menuList  py-6 hover:underline font-semibold">
           {" "}
           <Link
             to="/"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={500}
-            onClick={closenav}
+            onClick={() => scrollToSection("Hero")}
           >
             Home
           </Link>
         </li>
-        <li className="menuList  py-6  ">
+        <li className="menuList  py-6  hover:underline font-semibold">
           {" "}
           <Link
             to="about"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={500}
-            onClick={closenav}
+            onClick={() => scrollToSection("Exercises")}
           >
-            About
+            Exercises
           </Link>
         </li>
-        <li className="menuList  py-6  ">
-          {" "}
-          <Link
-            to="projects"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={500}
-            onClick={closenav}
-          >
-            Projects
-          </Link>
-        </li>
-        <li className="menuList  py-6  ">
-          {" "}
-          <Link
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={500}
-            onClick={closenav}
-          >
-            Contact
-          </Link>
-        </li>
-
         
       </ul>
     </div>
