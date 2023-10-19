@@ -1,6 +1,6 @@
+import Exercisehori from "./Exercisehori";
 import HorizontalScrollBar from "./HorizontalScrollBar ";
 import Loader from "./Loader";
-import SimilarHorizontal from "./SimilarHorizontal";
 
 const SimilarExercise = ({ targetMuscleExercises, targetequipment }) => {
   return (
@@ -9,7 +9,7 @@ const SimilarExercise = ({ targetMuscleExercises, targetequipment }) => {
         Exercises <span className="text-primary">that target</span> the same <span className="text-primary"> Muscles</span> Group
       </div>
       <div>
-        <SimilarHorizontal targetMuscleExercises={targetMuscleExercises} />
+        <Exercisehori targetMuscleExercises={targetMuscleExercises} />
       </div>
     </div>
   );
