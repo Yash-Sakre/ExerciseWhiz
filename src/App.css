@@ -1,30 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap");
+@font-face {
+  font-family: "Futura-ExtraBold";
+  src: local("Futura"), url("/fonts/Futura-ExtraBold Extra Bold.ttf");
+  font-weight: normal;
+}
 
-:root{
-    --primary-color: #F04444;
+:root {
+  --primary-color: #f04444;
   --secondary-color: #f86262;
   --dark-color: #000000;
   --light-color: #ffffff;
 }
 
-body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #FBF9FA;
-    color: black;
-    font-family: 'Inter', sans-serif;
-    
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fbf9fa;
+  color: black;
+  font-family: "Inter", sans-serif;
+}
+
+.futura {
+  font-family: "Futura-ExtraBold", "Inter", sans-serif;
+}
+.teko {
+  font-family: "Teko", sans-serif;
+}
+
+.grad {
+  color: #fff;
+  background-image: -webkit-linear-gradient(315deg, #fff 62%, #c02908 78%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* text-fill-color: transparent; */
+  -webkit-text-fill-color: transparent;
+}
+
+.stroke {
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: 2px;
 }
 
 .bg-image {
-  background-image: url('./assets/HeroBanner.jpg');
+  background-image: url("./assets/hero.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.card:hover{
-  
+
+
+.card:hover {
   box-shadow: 0 0 25px -3px var(--primary-color);
 }
 
@@ -41,7 +68,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FF2625;
+  color: #ff2625;
   font-size: 25px;
   border-radius: 4px;
   position: absolute;
@@ -66,7 +93,6 @@ body{
   flex-wrap: wrap;
 }
 
-
 .ScrollMenuDiv {
   width: 100%;
   height: auto;
@@ -75,5 +101,4 @@ body{
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
-
 }

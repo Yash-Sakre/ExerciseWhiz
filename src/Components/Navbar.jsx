@@ -29,13 +29,12 @@ const Navbar = () => {
     element.scrollIntoView({ behavior: "smooth" });
   };
 
-
   return (
-    <div className="navBar flex justify-between items-center  py-2 md:py-0 md:px-[4rem] px-[2rem] top-0 border border-primary rounded-xl my-2 lg:mx-1 mx-2 ">
+    <div className="navBar flex justify-between items-center py-2 md:py-0 md:px-[4rem] px-[2rem] top-0  my-2 lg:mx-1 mx-2 ">
       <div className="logoDiv">
-        <h1 className="logo text-[1rem] md:text-[2rem]  font-extrabold">
-          <Link to="/" >
-            <span className="text-primary">Exercise</span>Whiz
+        <h1 className="logo text-[1.5rem] md:text-[2rem] font-extrabold futura ">
+          <Link to="/">
+            <span className="text-primary stroke">FLEX</span>FIT
           </Link>
         </h1>
       </div>
@@ -44,19 +43,16 @@ const Navbar = () => {
         <ul className="hidden md:flex gap-8">
           <li className="menuList hover:underline font-semibold ">
             {" "}
-            <Link  to="/" onClick={() => scrollToSection("Hero")}>Home</Link>
+            <Link to="/" onClick={() => scrollToSection("Hero")}>
+              Home
+            </Link>
           </li>
           <li className="menuList  hover:underline font-semibold ">
             {" "}
-            <Link
-              to="/#Exercises"
-              onClick={() => scrollToSection("Exercises")}
-              
-            >
+            <Link to="/#Exercises" onClick={() => scrollToSection("Exercises")}>
               Exercises
             </Link>
           </li>
-          
         </ul>
       </div>
       {/* Hamburger */}
@@ -74,23 +70,16 @@ const Navbar = () => {
       >
         <li className="menuList  py-6 hover:underline font-semibold">
           {" "}
-          <Link
-            to="/"
-            onClick={() => scrollToSection("Hero")}
-          >
+          <Link to="/" onClick={() => scrollToSection("Hero")}>
             Home
           </Link>
         </li>
         <li className="menuList  py-6  hover:underline font-semibold">
           {" "}
-          <Link
-            to="about"
-            onClick={() => scrollToSection("Exercises")}
-          >
+          <Link to="about" onClick={() => scrollToSection("Exercises")}>
             Exercises
           </Link>
         </li>
-        
       </ul>
     </div>
   );
