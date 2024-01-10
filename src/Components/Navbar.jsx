@@ -1,5 +1,4 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
@@ -15,12 +14,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const currentRoute = location.pathname;
-    if (currentRoute === "/") {
-      setIsHome(true);
-    } else {
-      setIsHome(false);
-    }
-  }, [isHome, location]);
+    setIsHome(currentRoute === "/");
+  }, [location]);
 
   const scrollToSection = (id) => {
     closenav();
@@ -28,6 +23,11 @@ const Navbar = () => {
     const element = document.getElementById(id);
     element.scrollIntoView({ behavior: "smooth" });
   };
+
+  const menuItems = [
+    { link: "/", text: "Home", section: "Hero" },
+    { link: "/#Exercises", text: "Exercises", section: "Exercises" },
+  ];
 
   return (
     <div className="navBar flex justify-between items-center py-2 md:py-0 md:px-[4rem] px-[2rem] top-0  my-2 lg:mx-1 mx-2 ">
@@ -40,21 +40,18 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-8">
-        <ul className="hidden md:flex gap-8">
-          <li className="menuList hover:underline font-semibold ">
-            {" "}
-            <Link to="/" onClick={() => scrollToSection("Hero")}>
-              Home
-            </Link>
-          </li>
-          <li className="menuList  hover:underline font-semibold ">
-            {" "}
-            <Link to="/#Exercises" onClick={() => scrollToSection("Exercises")}>
-              Exercises
-            </Link>
-          </li>
+        <ul className="hidden md:flex gap-1">
+          {menuItems.map((item) => (
+            <NavItem
+              key={item.link}
+              link={item.link}
+              text={item.text}
+              onClick={() => scrollToSection(item.section)}
+            />
+          ))}
         </ul>
       </div>
+
       {/* Hamburger */}
       <div onClick={handleClick} className="md:hidden z-10">
         {!nav ? <FaBars /> : <FaTimes />}
@@ -65,24 +62,35 @@ const Navbar = () => {
         className={
           !nav
             ? "hidden"
-            : "absolute top-20 left-0 h-screen  w-full flex flex-col justify-center items-center text-black bg-white"
+            : "absolute top-16 h-[30vh] w-[50vh] flex flex-col justify-center items-center text-black bg-white rounded-2xl gap-5"
         }
       >
-        <li className="menuList  py-6 hover:underline font-semibold">
-          {" "}
-          <Link to="/" onClick={() => scrollToSection("Hero")}>
-            Home
-          </Link>
-        </li>
-        <li className="menuList  py-6  hover:underline font-semibold">
-          {" "}
-          <Link to="about" onClick={() => scrollToSection("Exercises")}>
-            Exercises
-          </Link>
-        </li>
+        {menuItems.map((item) => (
+          <MobileNavItem
+            key={item.link}
+            link={item.link}
+            text={item.text}
+            onClick={() => scrollToSection(item.section)}
+          />
+        ))}
       </ul>
     </div>
   );
 };
+
+const NavItem = ({ link, text, onClick }) => (
+  <li className="menuList py-1 px-4 font-semibold border-2 rounded-full border-primary hover:bg-primary hover:text-white">
+    <Link to={link} onClick={onClick}>
+      {text}
+    </Link>
+  </li>
+);
+const MobileNavItem = ({ link, text, onClick }) => (
+  <li className="menuList py-1 px-4 font-semibold  border rounded-full border-primary">
+    <Link to={link} onClick={onClick}>
+      {text}
+    </Link>
+  </li>
+);
 
 export default Navbar;

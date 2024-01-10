@@ -100,7 +100,7 @@ const SearchExercise = ({ setexercises, bodyPart, setBodyPart }) => {
 
       <div className="pt-2 relative mx-auto text-gray-600 mt-4">
         <input
-          className="border-2 border-gray-300 bg-white h-10 px-5 md:pr-[20rem] sm:pr-[10rem] pr-[5rem] rounded-lg text-sm focus:outline-none "
+          className="border-2 w-[40vw]  border-gray-300 bg-white h-10 px-5  pr-[5rem] rounded-lg text-sm focus:outline-none "
           type="text"
           value={Search}
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
