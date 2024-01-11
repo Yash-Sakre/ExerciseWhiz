@@ -32,9 +32,9 @@ const Navbar = () => {
   return (
     <div className="navBar flex justify-between items-center py-2 md:py-0 md:px-[4rem] px-[2rem] top-0  my-2 lg:mx-1 mx-2 ">
       <div className="logoDiv">
-        <h1 className="logo text-[1.5rem] md:text-[2rem] font-extrabold futura ">
+        <h1 className="logo text-[1.5rem] md:text-[2rem] font-bold futura ">
           <Link to="/">
-            <span className="text-primary stroke">FLEX</span>FIT
+            <span className="" >FLEX</span>FIT
           </Link>
         </h1>
       </div>
