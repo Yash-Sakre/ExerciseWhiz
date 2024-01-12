@@ -23,12 +23,12 @@ const Hero = () => {
       </div>
       <div className="flex mt-5 relative">
         <img
-          className="h-[70vh] sm:h-[80vh] w-[90vw] rounded-xl"
+          className="h-[50vh] sm:h-[80vh] w-[90vw] rounded-xl"
           src={p1}
           alt="img1"
           loading="lazy"
         />
-        <button className="absolute top-2 right-2 py-2 px-4 bg-primary rounded-xl text-white font-normal" onClick={handleExploreExercises}>
+        <button className="absolute bottom-2  right-2 py-2 px-4 bg-primary border-0 rounded-xl text-white font-normal" onClick={handleExploreExercises}>
           Exercise
         </button>
       </div>

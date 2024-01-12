@@ -30,7 +30,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="navBar flex justify-between items-center py-2 md:py-0 md:px-[4rem] px-[2rem] top-0  my-2 lg:mx-1 mx-2 ">
+    <div className="navBar flex justify-between items-center py-2 md:py-0 md:px-[4rem] px-[2rem] top-0  my-2 lg:mx-1 mx-2">
       <div className="logoDiv">
         <h1 className="logo text-[1.5rem] md:text-[2rem] font-bold futura ">
           <Link to="/">
@@ -62,7 +62,7 @@ const Navbar = () => {
         className={
           !nav
             ? "hidden"
-            : "absolute top-16 h-[30vh] w-[50vh] flex flex-col justify-center items-center text-black bg-white rounded-2xl gap-5"
+            : "absolute top-16 h-[30vh] w-[45vh] right-5 flex flex-col justify-center items-center text-black bg-white rounded-2xl gap-5 border z-20"
         }
       >
         {menuItems.map((item) => (
