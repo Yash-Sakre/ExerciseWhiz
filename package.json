@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.14",
     "@mui/material": "^5.14.14",
+    "cloudinary": "^1.41.2",
     "framer-motion": "^10.16.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
